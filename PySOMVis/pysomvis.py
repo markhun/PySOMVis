@@ -13,42 +13,50 @@
           SOMVisualizaiton
 """
 
-import panel as pn
-import numpy as np
 import holoviews as hv
+import numpy as np
+import panel as pn
 from holoviews import opts
-from holoviews.streams import Pipe, Buffer
+from holoviews.streams import Buffer, Pipe
 
-from controls.controllers import MainController, PointOptions, SegmentOptions
-hv.extension('bokeh')
+from .controls.controllers import (  # isort:skip
+    MainController,
+    PointOptions,
+    SegmentOptions,
+)
 
-from visualizations.complane import ComponentPlane
-from visualizations.dmatrix import DMatrix
-from visualizations.hithistogram import HitHist
-from visualizations.sdh import SDH
-from visualizations.qerror import QError
-from visualizations.umatrix import UMatrix
-from visualizations.upmatrix import UStar_PMatrix
-from visualizations.neighbourhood_graph import NeighbourhoodGraph
-from visualizations.clustering import Clustering
-from visualizations.metromap import MetroMap
-from visualizations.piechart import PieChart
-from visualizations.chessboard import Chessboard
-from visualizations.somstreamvis import SOMStreamVis
-from visualizations.sky_metaphor import SkyMetaphor
-from visualizations.topographic_error import TopographicError
-from visualizations.intrinsic_distance import IntrinsicDistance
-from visualizations.activityhist import ActivityHist
-from visualizations.minimumSpanningTree import MinimumSpanningTree
-from visualizations.cluster_connection import ClusterConnection
-from mnemonics.mnemonicSOM import MnemonicSOM
+hv.extension("bokeh")  # isort:skip
+
 from skimage.transform import resize
 
+from .mnemonics.mnemonicSOM import MnemonicSOM
+from .visualizations.activityhist import ActivityHist
+from .visualizations.chessboard import Chessboard
+from .visualizations.cluster_connection import ClusterConnection
+from .visualizations.clustering import Clustering
+from .visualizations.complane import ComponentPlane
+from .visualizations.dmatrix import DMatrix
+from .visualizations.hithistogram import HitHist
+from .visualizations.intrinsic_distance import IntrinsicDistance
+from .visualizations.metromap import MetroMap
+from .visualizations.minimumSpanningTree import MinimumSpanningTree
+from .visualizations.neighbourhood_graph import NeighbourhoodGraph
+from .visualizations.piechart import PieChart
+from .visualizations.qerror import QError
+from .visualizations.sdh import SDH
+from .visualizations.sky_metaphor import SkyMetaphor
+from .visualizations.somstreamvis import SOMStreamVis
+from .visualizations.topographic_error import TopographicError
+from .visualizations.umatrix import UMatrix
+from .visualizations.upmatrix import UStar_PMatrix
+
+# fmt: off
 OBJECTS_CLASSES = [ComponentPlane, HitHist, UMatrix, DMatrix, UStar_PMatrix, 
                    SDH, PieChart, NeighbourhoodGraph, Chessboard, Clustering, 
                    MetroMap, QError, SOMStreamVis, SkyMetaphor, TopographicError,
                    IntrinsicDistance, ActivityHist, MinimumSpanningTree, ClusterConnection, MnemonicSOM]
 
+# fmt: off
 _COLOURS_93 = ['#FF5555','#5555FF','#55FF55','#FFFF55','#FF55FF','#55FFFF','#FFAFAF','#808080',
               '#C00000','#0000C0','#00C000','#C0C000','#C000C0','#00C0C0','#404040','#FF4040',
               '#4040FF','#40FF40','#FFFF40','#FF40FF','#40FFFF','#C0C0C0','#800000','#000080',
